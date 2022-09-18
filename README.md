@@ -6,8 +6,6 @@ This package fetches values corresponding to the rarity of English language word
 
 In the simplest use case, this function requires only an input string and it returns a list of tuples, where each tuple contains a single input word and a value corresponding to its rarity. (All input is converted to lower-case and casing is ignored for the purposes of determining rarity.)
 
-Example:
-
 > word_rarity("the dog house")
 
 Returns: 
@@ -22,8 +20,6 @@ We see "house" is used about three times more frequently than "dog". We also see
 
 We can also fetch the average rarity of the words in a string by switching the function to aggregate mode.
 
-Example:
-
 > word_rarity("the dog house", mode='a')
 
 Returns: 
@@ -36,8 +32,6 @@ The returned value is the arthimetic mean of the rarity values of the input word
 
 The function can also be switched into finder mode, which strips away common words and returns a list containing only the input's rare words.
 
-Example:
-
 > word_rarity("Most of these words are common, but three of them, limpid, oeuvre and sesquipedalian, are not.", mode='f')
 
 Returns: 
@@ -45,8 +39,6 @@ Returns:
 ['oeuvre', 'limpid', 'sesquipedalian']
 
 By default, rare words are defined as those falling between the 13th and 95th percentile of the rarity dictionary. This range can be adjusted via the "top" and "bottom" arguments.
-
-Example:
 
 > word_rarity("Most of these words are common, but three of them, limpid, oeuvre and sesquipedalian, are not.", mode='f', top=50)
 
@@ -70,8 +62,6 @@ Alternatively, the value type can be changed to "zscore", "count" or "index".
 
 The data set used by the function is ordered by word rarity. "The" is at index 0, "pineapple" is at index 15405 and "perspicacious" is at index 268560.
 
-Example: 
-
 > word_rarity("pineapple", type="index")
 
 Returns: 
@@ -81,8 +71,6 @@ Returns:
 ### Count
 
 The data set's words are ordered according to the number of times they were counted in the original corpus. 
-
-Example: 
 
 > word_rarity("happy roustabout", type="count")
 
@@ -94,15 +82,13 @@ Returns:
 
 The data also contains Z-scores as an alternative standardized measure to frequency.
 
-Example:
-
 > word_rarity("the sad raconteur", type="zscore")
  
 Returns:
 
 > [('raconteur', -0.025691135878988), ('sad', 0.169619810283159), ('the', 348.9316244446038)]
 
-The data types and function modes can also be mixed and matched:
+The data types and function modes can also be mixed and matched.
 
 > word_rarity("the sad raconteur", mode="a", type="zscore")
 
