@@ -89,10 +89,10 @@ def word_rarity(input_text, mode='w', type='frequency', top=13, bottom=95):
     token_values = fetch_rarity(tokens, type)
     if mode == 'a':
         mean_of_tokens = fetch_mean(token_values)
-        print(mean_of_tokens)
+        return mean_of_tokens
     elif mode == 'f':
         rare_words = rare_finder(token_values, top, bottom)
-        print(rare_words)
+        return rare_words
     else: #'w'
-        print(token_values)
+        return token_values
 
