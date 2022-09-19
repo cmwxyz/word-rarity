@@ -1,6 +1,6 @@
 # Word Rarity
 
-This package fetches values corresponding to the rarity of English language words. Alternatively, it can be fed input text and return a list of only those words meeting either the default or user-specified conditions for rarity.
+This script fetches values corresponding to the rarity of English language words. Alternatively, it can be fed input text and return a list of only those words meeting either the default or user-specified conditions for rarity.
 
 ## Basic usage
 
