@@ -104,7 +104,7 @@ The data used by this function derives from a training corpus of more than one t
 
 The data set used by this function is a reduced version of the Google data shared by the writers of the book Beautiful Data. It contains one-third of a million of the most common English words. More information on that can be found [here](http://norvig.com/ngrams/).
 
-In addition to the one-third of a million words ordered by rarity, the data set used by this function also contains zscores, standardized frequency values — ranging between 0 and 1 — based on count values, and the count values themselves, which correspond to the number of times each word was counted in the Google data.
+In addition to the one-third of a million words ordered by rarity, the data set used by this function also contains Z-scores, standardized frequency values — ranging between 0 and 1 — based on count values, and the count values themselves, which correspond to the number of times each word was counted in the Google data.
 
 
 
