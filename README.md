@@ -44,7 +44,7 @@ By default, rare words are defined as those falling between the 13th and 95th pe
 
 Returns:
 
-['sesquipedalian']
+> ['sesquipedalian']
 
 Only the rarest of the input's three rare words fell within the adjusted rare range.
 
