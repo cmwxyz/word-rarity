@@ -74,7 +74,7 @@ def rare_finder(tuple_list, top, bottom):
     for tuple in tuple_list:
         if tuple[1] >= top_index and tuple[1] <= bottom_index:
             rare_words.append(tuple[0])
-        elif tuple[1] == 0:
+        elif tuple[1] == 0 and tuple[0] != "the":
             rare_words.append(tuple[0])
     return rare_words
 
