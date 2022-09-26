@@ -36,7 +36,7 @@ The function can also be switched into finder mode, which strips away common wor
 
 Returns: 
 
-['oeuvre', 'limpid', 'sesquipedalian']
+> ['oeuvre', 'limpid', 'sesquipedalian']
 
 By default, rare words are defined as those falling between the 13th and 95th percentile of the rarity dictionary. This range can be adjusted via the "top" and "bottom" arguments.
 
