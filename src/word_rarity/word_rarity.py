@@ -1,18 +1,19 @@
-import pandas as pd
 import re
+from .word_list import word_df, dict_size
 
-df = pd.read_csv('word_rarity_list.csv')
-dict_size = df['word'].size
 
 def strip_character(a_string):
     r = re.compile(r"[^a-zA-Z- ]")
     return r.sub(' ', a_string)
 
+
 def remove_spaces(a_string):
     return re.sub(' +', ' ', a_string)
 
+
 def remove_apos_s(a_string):
     return re.sub("'s", '', a_string)
+
 
 def clean_input_text(input_text):
     # convert input to lowercase
@@ -27,12 +28,13 @@ def clean_input_text(input_text):
     input_text = input_text.strip()
     return input_text
 
+
 def tokenize(cleaned_text):
     # split string on spaces
     tokens = cleaned_text.split(" ")
     # create empty set
     token_set = set()
-    # add one of each unqiue word from 'tokens' to set
+    # add one of each unique word from 'tokens' to set
     for word in tokens:
         if word in token_set:
             pass
@@ -40,12 +42,13 @@ def tokenize(cleaned_text):
             token_set.add(word)
     return token_set
 
+
 # returns rarity values of each word
 # frequency, zscore, count, index
 def fetch_rarity(input_text, type):
     results = []
     for word in input_text:
-        fetched_values = df[df['word'] == word]
+        fetched_values = word_df[word_df['word'] == word]
         if fetched_values.size == 0:
             results.append((word, 0))
         else:
@@ -59,6 +62,7 @@ def fetch_rarity(input_text, type):
                 results.append((word, fetched_values.index.values[0]))
     return results
 
+
 def fetch_mean(tuple_list):
     running_total = 0.0
     size = len(tuple_list)
@@ -66,6 +70,7 @@ def fetch_mean(tuple_list):
         running_total += tuple[1]
     list_mean = running_total/size
     return list_mean
+
 
 def rare_finder(tuple_list, top, bottom):
     rare_words = []
@@ -78,11 +83,13 @@ def rare_finder(tuple_list, top, bottom):
             rare_words.append(tuple[0])
     return rare_words
 
-#   'w' word mode returns rarity values for each word
-#   'a' aggregate mode returns average rarity values
-#   's' set-aggregate mode returns average rarity of only unique input values
-#   'f' finder mode returns words within rare range
 def word_rarity(input_text, mode='w', type='frequency', top=13, bottom=95):
+    """
+    'w' word mode returns rarity values for each word
+    'a' aggregate mode returns average rarity values
+    's' set-aggregate mode returns average rarity of only unique input values
+    'f' finder mode returns words within rare range
+    """
     if mode == 'f':
         type = 'index'
     cleaned_input_text = clean_input_text(input_text)
