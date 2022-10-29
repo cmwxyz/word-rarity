@@ -49,14 +49,14 @@ def fetch_rarity(input_text, type):
         if fetched_values.size == 0:
             results.append((word, 0))
         else:
-            if type == 'zscore':
+            if type == 'frequency':
+                results.append((word, fetched_values['frequency'].values[0]))
+            elif type == 'zscore':
                 results.append((word, fetched_values['zscore'].values[0]))
             elif type == 'count':
                 results.append((word, fetched_values['count'].values[0]))
-            elif type == 'index':
-                results.append((word, fetched_values.index.values[0]))
             else:
-                results.append((word, fetched_values['frequency'].values[0]))
+                results.append((word, fetched_values.index.values[0]))
     return results
 
 def fetch_mean(tuple_list):
@@ -80,14 +80,18 @@ def rare_finder(tuple_list, top, bottom):
 
 #   'w' word mode returns rarity values for each word
 #   'a' aggregate mode returns average rarity values
+#   's' set-aggregate mode returns average rarity of only unique input values
 #   'f' finder mode returns words within rare range
 def word_rarity(input_text, mode='w', type='frequency', top=13, bottom=95):
     if mode == 'f':
         type = 'index'
     cleaned_input_text = clean_input_text(input_text)
-    tokens = tokenize(cleaned_input_text)
-    token_values = fetch_rarity(tokens, type)
     if mode == 'a':
+        tokens = cleaned_input_text.split(" ")
+    else:
+        tokens = tokenize(cleaned_input_text)
+    token_values = fetch_rarity(tokens, type)
+    if mode == 'a' or mode == 's':
         mean_of_tokens = fetch_mean(token_values)
         return mean_of_tokens
     elif mode == 'f':
