@@ -28,6 +28,18 @@ Returns:
 
 The returned value is the arthimetic mean of the rarity values of the input words. This can be used to compare the language of sentences, paragraphs, articles or longer works.
 
+### Set-aggregate mode
+
+Set-aggregate mode ignores duplicate words in the input.
+
+> word_rarity("the the the the dog house", mode='s')
+
+Returns: 
+
+> 0.33777891285639666
+
+This is the same value returned when "the dog house" is calculated by aggregate mode. Running "the the the the dog house" in aggregate mode returns a higher number because it accounts for the duplicate instances of "the".
+
 ### Finder mode
 
 The function can also be switched into finder mode, which strips away common words and returns a list containing only the input's rare words.
