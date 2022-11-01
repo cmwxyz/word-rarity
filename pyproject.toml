@@ -1,0 +1,34 @@
+[build-system]
+requires = [
+    "setuptools>=65.4.0",
+    "setuptools-scm"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "word-rarity"
+description = "Calculate the rarity of English words"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT License"}
+classifiers = [
+    'Programming Language :: Python :: 3',
+]
+authors = [{name = "cmwxyz"}]
+dependencies = [
+    "pandas>=1.5.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/cmwxyz/word-rarity"
+"Bug Tracker" = "https://github.com/cmwxyz/word-rarity/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "word_rarity.__version__.__VERSION__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+word_rarity = ["*.csv"]
